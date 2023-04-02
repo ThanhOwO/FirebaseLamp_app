@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "944814027736",
+    "firebase_url": "https://slamp-iots-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "slamp-iots",
+    "storage_bucket": "slamp-iots.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:944814027736:android:2e759ecbac4829b08df8ad",
+        "android_client_info": {
+          "package_name": "com.example.espvfb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "944814027736-gcl2r1m8d5aip6a5f6j5uadltttrhg21.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXrpOHtelKpeHkQUEf6ZO1RDmMQtEdE10"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "944814027736-gcl2r1m8d5aip6a5f6j5uadltttrhg21.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
