@@ -28,6 +28,18 @@
             android:background="#06FF00"
             android:textAlignment="center" />
 
+        <Button
+            android:id="@+id/tempBtn"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="40dp"
+            android:layout_gravity="center"
+            android:text="Check Temp"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:background="#06FF00"
+            android:textAlignment="center" />
+
     </LinearLayout>
 
 </RelativeLayout>

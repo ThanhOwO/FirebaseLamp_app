@@ -1,5 +1,6 @@
 package com.example.espvfb;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
     private ColorPickerView mColorPicker;
-    private Button mButton;
+    private Button mButton, tempBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         mColorPicker = findViewById(R.id.colorPicker);
         mButton = findViewById(R.id.button);
+        tempBtn = findViewById(R.id.tempBtn);
 
         // Initialize Firebase database reference
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -43,6 +45,14 @@ public class MainActivity extends AppCompatActivity {
                 mDatabase.child("red").setValue(red);
                 mDatabase.child("green").setValue(green);
                 mDatabase.child("blue").setValue(blue);
+            }
+        });
+
+        tempBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, TempHumi.class);
+                startActivity(intent);
             }
         });
 
