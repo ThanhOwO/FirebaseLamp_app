@@ -46,7 +46,10 @@ public class TemperatureFragment extends Fragment {
                 mTemperatureTextView.setText(value+" C°");
 
                 assert value != null;
-                mTemperatureProgressBar.setProgress(Integer.parseInt(value));
+                float floatValue = Float.parseFloat(value);
+                int intValue = Math.round(floatValue);
+                mTemperatureProgressBar.setProgress(intValue);
+
             }
 
             @Override

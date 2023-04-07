@@ -46,7 +46,9 @@ public class HumidityFragment extends Fragment {
                 mHumidityTextView.setText(value + " %");
 
                 assert value != null;
-                mHumidityProgressBar.setProgress(Integer.parseInt(value));
+                float floatValue = Float.parseFloat(value);
+                int intValue = Math.round(floatValue);
+                mHumidityProgressBar.setProgress(intValue);
             }
 
             @Override
