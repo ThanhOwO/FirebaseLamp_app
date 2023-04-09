@@ -10,6 +10,23 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <Switch
+            android:layout_margin="20dp"
+            android:id="@+id/modeSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Change mode" />
+
+        <TextView
+            android:id="@+id/AutoNoti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Auto mode"
+            android:textStyle="bold"
+            android:textSize="50dp"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+
         <com.github.dhaval2404.colorpicker.ColorPickerView
             android:id="@+id/colorPicker"
             android:layout_width="match_parent"
