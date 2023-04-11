@@ -28,8 +28,9 @@
             android:layout_toLeftOf="@+id/menuImageView"
             android:text="@string/title_main"
             android:fontFamily="sans-serif"
-            android:textColor="@color/black_500"
-            android:textSize="24sp" />
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/sub_titleTextView"
@@ -114,7 +115,7 @@
             android:gravity="center"
             android:text="@string/humidity"
             android:textSize="28sp"
-            android:textColor="@color/black_500"
+            android:textColor="@color/white"
             android:textStyle="bold" />
 
         <TextView
@@ -122,7 +123,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/title_humidity"
-            android:textColor="@color/black_700"
+            android:textColor="@color/white"
             android:textSize="24sp" />
     </LinearLayout>
 
