@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mButton, tempBtn;
     private Switch mSwitch;
     private TextView autonoti;
+    private ImageView powerOff, powerOn;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         tempBtn = findViewById(R.id.tempBtn);
         mSwitch = findViewById(R.id.modeSwitch);
         autonoti = findViewById(R.id.AutoNoti);
+        powerOff = findViewById(R.id.poweroff);
+        powerOn = findViewById(R.id.poweron);
 
         // Initialize Firebase database reference
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -104,6 +108,52 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 // Handle database error
+            }
+        });
+
+        //Power management
+        mDatabase.child("power").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                boolean powerValue = snapshot.getValue(Boolean.class);
+                if (powerValue) {
+                    // Power is ON, show all layout and hide powerOn image view
+                    mColorPicker.setVisibility(View.VISIBLE);
+                    mButton.setVisibility(View.VISIBLE);
+                    mSwitch.setVisibility(View.VISIBLE);
+                    autonoti.setVisibility(View.GONE);
+                    powerOn.setVisibility(View.GONE);
+                    powerOff.setVisibility(View.VISIBLE);
+                } else {
+                    // Power is OFF, hide all layout and show powerOn image view
+                    mColorPicker.setVisibility(View.GONE);
+                    mButton.setVisibility(View.GONE);
+                    mSwitch.setVisibility(View.GONE);
+                    autonoti.setVisibility(View.GONE);
+                    powerOn.setVisibility(View.VISIBLE);
+                    powerOff.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle database error
+            }
+        });
+
+        powerOn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Set power child value to true
+                mDatabase.child("power").setValue(true);
+            }
+        });
+
+        powerOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Set power child value to false
+                mDatabase.child("power").setValue(false);
             }
         });
 

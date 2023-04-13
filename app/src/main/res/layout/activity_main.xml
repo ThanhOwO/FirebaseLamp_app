@@ -6,16 +6,33 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/settinglayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
+        android:layout_height="wrap_content">
         <Switch
             android:layout_margin="20dp"
             android:id="@+id/modeSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Change mode" />
+
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:id="@+id/poweroff"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="Power off"
+            android:src="@drawable/poweroff"
+            android:layout_marginLeft="150dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/settinglayout"
+        android:id="@+id/colorpickerlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/AutoNoti"
@@ -32,6 +49,14 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:src="@drawable/poweron"
+            android:visibility="gone"
+            android:id="@+id/poweron"/>
+
 
         <Button
             android:id="@+id/button"
