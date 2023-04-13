@@ -20,6 +20,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -58,12 +61,15 @@ public class MainActivity extends AppCompatActivity {
                 int green = Color.green(color);
                 int blue = Color.blue(color);
 
-                // Write the RGB values to Firebase
-                mDatabase.child("red").setValue(red);
-                mDatabase.child("green").setValue(green);
-                mDatabase.child("blue").setValue(blue);
+                // Write the RGB values to Firebase under a child named "rgb"
+                Map<String, Object> rgbValues = new HashMap<>();
+                rgbValues.put("red", red);
+                rgbValues.put("green", green);
+                rgbValues.put("blue", blue);
+                mDatabase.child("rgb").setValue(rgbValues);
             }
         });
+
 
         tempBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -193,9 +199,12 @@ public class MainActivity extends AppCompatActivity {
 
         // Write the RGB values to Firebase if mode is "auto"
         if (mSwitch.isChecked()) {
-            mDatabase.child("red").setValue(red);
-            mDatabase.child("green").setValue(green);
-            mDatabase.child("blue").setValue(blue);
+            // Write the RGB values to Firebase under a child named "rgb"
+            Map<String, Object> rgbValues = new HashMap<>();
+            rgbValues.put("red", red);
+            rgbValues.put("green", green);
+            rgbValues.put("blue", blue);
+            mDatabase.child("rgb").setValue(rgbValues);
         }
 
         // Return the color as an integer
