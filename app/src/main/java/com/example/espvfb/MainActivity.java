@@ -130,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
                     autonoti.setVisibility(View.GONE);
                     powerOn.setVisibility(View.GONE);
                     powerOff.setVisibility(View.VISIBLE);
+                    tempBtn.setVisibility(View.VISIBLE);
                 } else {
                     // Power is OFF, hide all layout and show powerOn image view
                     mColorPicker.setVisibility(View.GONE);
@@ -138,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
                     autonoti.setVisibility(View.GONE);
                     powerOn.setVisibility(View.VISIBLE);
                     powerOff.setVisibility(View.GONE);
+                    tempBtn.setVisibility(View.GONE);
                 }
             }
 

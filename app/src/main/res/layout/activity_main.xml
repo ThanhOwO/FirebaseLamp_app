@@ -27,6 +27,14 @@
 
     </LinearLayout>
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:src="@drawable/poweron"
+        android:id="@+id/poweron"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+
     <LinearLayout
         android:layout_below="@+id/settinglayout"
         android:id="@+id/colorpickerlayout"
@@ -49,14 +57,6 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:src="@drawable/poweron"
-            android:visibility="gone"
-            android:id="@+id/poweron"/>
-
 
         <Button
             android:id="@+id/button"
