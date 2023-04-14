@@ -18,12 +18,12 @@
 
         <ImageView
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="150dp"
             android:id="@+id/poweroff"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:text="Power off"
-            android:src="@drawable/poweroff"
-            android:layout_marginLeft="150dp"/>
+            android:src="@drawable/poweroff" />
 
     </LinearLayout>
 

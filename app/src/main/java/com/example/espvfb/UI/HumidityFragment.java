@@ -33,7 +33,7 @@ public class HumidityFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_humidity, container, false);
         // Write a message to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("humidity");
+        DatabaseReference myRef = database.getReference("DHT");
 
         final TextView mHumidityTextView = root.findViewById(R.id.humidityTextView);
         final ProgressBar mHumidityProgressBar = root.findViewById(R.id.humidityProgressBar);
@@ -42,13 +42,17 @@ public class HumidityFragment extends Fragment {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String value = dataSnapshot.getValue().toString();
-                mHumidityTextView.setText(value + " %");
+                String value = dataSnapshot.child("humidity").getValue(String.class);
+                if (value != null) {
+                    mHumidityTextView.setText(value + " %");
 
-                assert value != null;
-                float floatValue = Float.parseFloat(value);
-                int intValue = Math.round(floatValue);
-                mHumidityProgressBar.setProgress(intValue);
+                    float floatValue = Float.parseFloat(value.trim());
+                    int intValue = Math.round(floatValue);
+                    mHumidityProgressBar.setProgress(intValue);
+                } else {
+                    // Handle null case
+                    Log.d("TAG", "Humidity value is null");
+                }
             }
 
             @Override

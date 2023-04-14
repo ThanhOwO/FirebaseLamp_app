@@ -32,7 +32,7 @@ public class TemperatureFragment extends Fragment {
 
         // Write a message to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("temperature");
+        DatabaseReference myRef = database.getReference("DHT");
 
 
         final TextView mTemperatureTextView = root.findViewById(R.id.temperatureTextView);
@@ -42,14 +42,17 @@ public class TemperatureFragment extends Fragment {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String value = dataSnapshot.getValue().toString();
-                mTemperatureTextView.setText(value+" C°");
+                String value = dataSnapshot.child("temperature").getValue(String.class);
+                if (value != null) {
+                    mTemperatureTextView.setText(value+" C°");
 
-                assert value != null;
-                float floatValue = Float.parseFloat(value);
-                int intValue = Math.round(floatValue);
-                mTemperatureProgressBar.setProgress(intValue);
-
+                    float floatValue = Float.parseFloat(value.trim());
+                    int intValue = Math.round(floatValue);
+                    mTemperatureProgressBar.setProgress(intValue);
+                } else {
+                    // Handle null case
+                    Log.d("TAG", "Humidity value is null");
+                }
             }
 
             @Override

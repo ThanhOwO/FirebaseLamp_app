@@ -1,19 +1,29 @@
 package com.example.espvfb;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.github.dhaval2404.colorpicker.ColorPickerView;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
     private ColorPickerView mColorPicker;
-    private Button mButton, tempBtn;
+    private Button mButton, tempBtn, wifiBtn;
     private Switch mSwitch;
     private TextView autonoti;
     private ImageView powerOff, powerOn;
@@ -99,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Add a listener for the temperature child
-        mDatabase.child("temperature").addValueEventListener(new ValueEventListener() {
+        mDatabase.child("DHT").child("temperature").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 // Get the temperature value from Firebase
@@ -148,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
                 // Handle database error
             }
         });
+
 
         powerOn.setOnClickListener(new View.OnClickListener() {
             @Override
